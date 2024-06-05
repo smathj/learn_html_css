@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        li {
+            float: left;
+            margin-right: 30px;
+            font-size: 32px;
+            list-style: none;
+        }
+
+        li::after {
+            content: ' | ';
+        }
+
+        li:first-of-type::before {
+            content: '시작 ';
+        }
+
+        li:last-of-type::after {
+            /*content: '';*/
+            content: ' 끝';
+        }
+
+    </style>
+</head>
+<body>
+    <ul>
+        <li>A</li>
+        <li>B</li>
+        <li>C</li>
+    </ul>
+</body>
+</html>

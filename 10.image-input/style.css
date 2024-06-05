@@ -1,0 +1,15 @@
+.image {
+    width: 400px;
+    height: 400px;
+
+
+    /*object-fit: fill;  !*fill 기본값*!*/
+    object-fit: cover;  /*!야무지게 채우기, 약간 잘림*/
+    /*object-fit: contain;*/
+    /*object-fit: none;*/
+    /*object-fit: scale-down;*/
+
+    /*object-position: left;  !*이미지 왼쪽을 살려주세요*!*/
+    /*object-position: right;  !*이미지 오른쪽을 살려주세요*!*/
+
+}

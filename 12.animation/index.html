@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: relative;
+            /*애니메이션 이름, 한사이클 시간,딜레이가 2초, 무한반복, 돌아오기*/
+            animation: animationName 5s linear 2s infinite alternate;
+        }
+
+        @keyframes animationName {
+            0% {
+                background-color: lightblue;
+                left: 0px;
+                top: 0px
+            }
+
+            25% {
+                background-color: lightcoral;
+                left: 150px;
+                top: 0px
+            }
+
+            50% {
+                background-color: lightcyan;
+                left: 150px;
+                top: 150px
+            }
+
+            75% {
+                background-color: lightgray;
+                left: 0px;
+                top: 150px
+            }
+
+            100% {
+                background-color: lightgreen;
+                left: 0px;
+                top: 0px
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+
+    </div>
+</body>
+</html>

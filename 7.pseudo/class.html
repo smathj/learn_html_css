@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        /*.parent 의 자식중 첫번째 자식이 p 이면*/
+        .parent p:first-child {
+            color: orange;
+        }
+
+        /*.parent 의 p 자식중 첫번째 요소*/
+        .parent p:first-of-type {
+            color: lightpink;
+        }
+
+
+        .container {
+            background-color: lightblue;
+            padding: 10px;
+            margin-bottom: 30px;
+
+        }
+
+        .container:hover {
+            background-color: lightcoral;
+        }
+
+        .focus-input:focus {
+            background-color: lightgreen;
+        }
+
+        /*자식 결합자 > */
+        .container-two > div {
+            margin-top: 30px;
+            background-color: lightpink;
+            width: 100px;
+            height: 100px;
+            float: left;
+        }
+
+        .container-two > div:nth-child(2n+1) {
+            background-color: lightskyblue;
+        }
+
+        .container-two > div:last-child {
+            width: 300px;
+        }
+
+
+
+    </style>
+</head>
+<body>
+
+    <div class="container container-box">
+        Mouse Hover
+    </div>
+
+
+    <input type="text" class="focus-input">
+
+    <div class="container-two">
+        <div><div></div></div>
+        <div><div></div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+
+    <div class="parent">
+        <span>A</span>
+        <p>B</p>
+        <p>C</p>
+    </div>
+</body>
+</html>
