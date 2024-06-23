@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Single+Day&display=swap');
+    </style>
+    <style>
+        * {
+            font-family: "Single Day";
+            font-weight: 400;
+            font-style: normal;
+            box-sizing: border-box;
+
+        }
+
+        body {
+
+
+            width: 100vh;
+            height: 100vh;
+            background-color: black;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background-color: white;
+            width: 50vh;
+            height: 70vh;
+            border-radius: 15px;
+        }
+
+        .header {
+            margin: 1%;
+            height: 5%;
+            /*display: grid;*/
+            /*grid-template-columns: 10fr 1fr;*/
+            /*grid-column-gap: 3%;*/
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+        }
+
+        .w100p {
+            width: 100%;
+        }
+
+        .w70p {
+            width: 70%;
+        }
+
+        .w30p {
+            width: 70%;
+        }
+
+        .header * {
+            border-radius: 5px;
+            font-size: 17px;
+            font-weight: bold;
+            text-align: center;
+
+        }
+        .header input:first-child {
+            display: block;
+            width: 80%;
+        }
+
+        .header input:last-child {
+            display: block;
+            width: 15%;
+            background-color: #4d91e5;
+        }
+
+        .chat-header {
+            /*border: 1px solid red;*/
+            height: 10%;
+            margin: 3% 0;
+        }
+
+        .chat-body {
+            /*border: 1px solid red;*/
+            height: 70%;
+            margin: 3% 0;
+        }
+
+        .chat-more {
+            /*border: 1px solid red;*/
+            height: 6%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .chat-more div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            font-weight: bold;
+            width: 30%;
+            height: 100%;
+            border: 1px solid black;
+            border-radius: 10px;
+        }
+
+        .chat-header-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .chat-header-container div:first-child {
+            border: 1px solid black;
+            width: 30%;
+            height: 100%;
+            margin-left: 2%;
+            font-size: 25px;
+            font-weight: bold;
+            border-radius: 12px;
+
+        }
+
+
+        .chat-header-container div:last-child {
+            border: 1px solid black;
+            width: 30%;
+            height: 100%;
+            margin-right: 3%;
+            border-radius: 12px;
+        }
+
+        .chat-header-container div:last-child span {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .chat-header-container div:first-child:hover {
+            background-color: black;
+            color: white;
+        }
+        .chat-header-container div:last-child:hover {
+            background-color: black;
+            color: white;
+        }
+
+
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .start {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .chat-body {
+            width: 100%;
+        }
+        .chat-body-row {
+            width: 95%;
+            height: 10%;
+            display: flex;
+            justify-content: space-between;
+            /*align-items: center;*/
+            margin-top: 2%;
+            margin-left: 2%;
+            margin-right: 2%;
+        }
+
+        .chat-body-row div:first-child {
+            border: 1px solid black;
+            border-radius: 10px;
+            width: 70%;
+            padding-left: 2%
+        }
+        .chat-body-row div:last-child {
+            border: 1px solid black;
+            border-radius: 10px;
+            width: 20%;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <input type="text" placeholder="검색어를 입력해주세요">
+        <input type="text" value="검색">
+    </div>
+    <div class="chat-header">
+        <div class="chat-header-container">
+            <div class="center">
+                방만들기
+            </div>
+
+            <div class="center">
+                <span>현재 인원&nbsp;</span>
+                <span>00</span>
+                <span>&nbsp;명</span>
+            </div>
+        </div>
+        <div></div>
+    </div>
+    <div class="chat-body">
+
+        <div class="chat-body-row">
+            <div class="start">첫번째 방</div>
+            <div class="center">입장</div>
+        </div>
+        <div class="chat-body-row">
+            <div class="start">첫번째 방</div>
+            <div class="center">입장</div>
+        </div>
+        <div class="chat-body-row">
+            <div class="start">첫번째 방</div>
+            <div class="center">입장</div>
+        </div>
+        <div class="chat-body-row">
+            <div class="start">첫번째 방</div>
+            <div class="center">입장</div>
+        </div>
+        <div class="chat-body-row">
+            <div class="start">첫번째 방</div>
+            <div class="center">입장</div>
+        </div>
+        <div class="chat-body-row">
+            <div class="start">첫번째 방</div>
+            <div class="center">입장</div>
+        </div>
+        <div class="chat-body-row">
+            <div class="start">첫번째 방</div>
+            <div class="center">입장</div>
+        </div>
+        <div class="chat-body-row">
+            <div class="start">첫번째 방</div>
+            <div class="center">입장</div>
+        </div>
+
+
+    </div>
+    <div class="chat-more">
+        <div>
+            더보기
+        </div>
+    </div>
+</div>
+</body>
+</html>
