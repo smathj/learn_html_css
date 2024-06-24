@@ -93,7 +93,6 @@
 }
 
 .red {
-    background-color: red;
     text-align: center;
     font-weight: bold;
     display: flex;
@@ -103,7 +102,6 @@
 }
 
 .blue {
-    background-color: blue;
     display: none;
     text-align: center;
     font-weight: bold;
@@ -112,7 +110,6 @@
 }
 
 .yellow {
-    background-color: yellow;
     display: none;
     text-align: center;
     font-weight: bold;
