@@ -22,6 +22,7 @@
                     ul.style.display = 'flex';
                     ul.style.position = 'absolute'
                     ul.style.top = '100px'
+                    ul.style.flexWrap = 'wrap'
                 })
                 /*
                 li.addEventListener('mouseout', (event) => {
@@ -32,6 +33,30 @@
                 })
                 */
             })
+
+            setInterval(() => {
+                const divArr = [...document.querySelectorAll('.body_ad div')];
+                let targetIndex = 0;
+                let lastIndex = divArr.length - 1;
+                const nowDiv = divArr.find((div, index) => {
+                    const isActive = div.classList[div.classList.length - 1];
+                    targetIndex = index;
+                    return isActive === 'active'
+                })
+                nowDiv.style.animation = 'rm_my_ani 0.1s ease';
+                nowDiv.classList.remove('active');
+
+                setTimeout(() => {
+                    nowDiv.style.display = 'none'
+                }, 100)
+
+                const nextDiv = divArr[targetIndex + 1 <= lastIndex ? targetIndex + 1 : 0];
+                nextDiv.style.display = 'flex';
+                nextDiv.style.animation = 'my_ani 0.1s ease'
+                nextDiv.classList.add('active')
+
+
+            }, 2000)
         }
     </script>
 </head>
@@ -85,6 +110,32 @@
         </div>
     </div>
     <div class="body">
+        <!--이미지회전-->
+        <div class="body_ad">
+            <!--
+            <div class="red active">치킨</div>
+            <div class="blue">피자</div>
+            <div class="yellow">햄버거</div>
+            -->
+            <div class="red active">
+                <img src="images/1.jpg" />
+            </div>
+            <div class="blue">
+                <img src="images/2.jpg" />
+            </div>
+            <div class="yellow">
+                <img src="images/3.jpg" />
+            </div>
+        </div>
+
+        <!--검색조건-->
+        <div class="body_search">
+
+        </div>
+        <!--리스트-->
+        <div class="body_content">
+
+        </div>
 
     </div>
 </div>
