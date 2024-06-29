@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header {
+    display: flex;
+    gap: 10px;
+}
+
+div {
+    margin: 50px 0;
+    text-align: center;
+    border: 1px solid black;
+    width: 200px;
+    height: 200px;
+}
+
+#text {
+    text-shadow: 5px 5px 10px red;
+    box-shadow: 5px 5px 10px blue;
+}
+
+#gradient {
+    /*background: linear-gradient(top bottom, red, 1%, blue, 50% orange, 1% green, 100%);*/
+    background: linear-gradient(45deg, red 0%, blue 100%);
+    /*background: linear-gradient(180deg, red 0%, blue 100%);*/
+}
+
+.box {
+    background-color: #73AD21;
+    transition: background-color 1s ease-in-out 0s;
+    /*transition-property: background-color;*/
+    /*transition-duration: 1s;    !*2초 동안 진행한다*!*/
+    /*transition-timing-function: ease-in-out;*/
+    /*transition-delay: 0s;*/
+
+}
+
+.box:hover {
+    background-color: #ea2275;
+}
+
+.ani {
+    background-color: blue;
+    animation-name: rint;
+    animation-duration: 2s;
+    animation-delay: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease;
+    animation-direction: alternate;
+}
+
+@keyframes rint {
+    50% {
+        background-color: yellow;
+    }
+    100% {
+        background-color: red;
+    }
+}
+
+.ball {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: goldenrod;
+    width: 10%;
+    height: 100%;
+    border-radius: 50%;
+    animation-name: move;
+    animation-duration: 1s;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease;
+    animation-direction: alternate;
+    overflow: hidden;
+}
+
+@keyframes move {
+    100% {
+        background-color: blue;
+        transform: translateX(900%);
+    }
+}
+
+.round {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: goldenrod;
+    animation-name: move2;
+    animation-duration: 1s;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease;
+    animation-direction: alternate;
+    border: none;
+}
+
+.round > img {
+    object-fit: cover;
+    width: 200px;
+    height: 200px;
+}
+
+@keyframes move2 {
+    100% {
+        background-color: blue;
+        transform: rotate(3600deg);
+    }
+}

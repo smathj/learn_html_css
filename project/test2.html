@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        #box {
+
+        }
+
+        @keyframes ani {
+            0% {
+                height: 0px;
+            }
+
+
+            100% {
+                background-color: red;
+                height: 500px;
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <div id="here">마우스 올려</div>
+    <div id="box">
+
+    </div>
+
+
+
+    <script>
+        document.getElementById('here')
+            .addEventListener('mouseenter', (event) => {
+
+                console.log('ahhhhhh');
+                const box = document.getElementById('box');
+
+                box.style.animationName = 'ani';
+                box.style.animationFillMode = 'forwards';
+                box.style.animationDuration = '0.5s';
+                box.style.animationTimingFunction = 'ease-in-out';
+                box.innerText = '짖어';
+
+
+
+            })
+    </script>
+</body>
+</html>

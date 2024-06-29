@@ -12,7 +12,8 @@
     justify-content: space-between;
 }
 
-.header ul {
+/*.header ul {*/
+.header .header_section_1 > ul {
     list-style-type: none;
     display: flex;
     gap: 20px;
@@ -22,6 +23,7 @@
     align-items: center;
     position: relative;
 }
+
 
 .header .li_first {
     text-align: center;
@@ -45,7 +47,7 @@
 .container .body {
     width: 100%;
     height: 90%;
-    margin-top: 30px;
+    /*margin-top: 30px;*/
 }
 
 .header_section_1 {
@@ -53,11 +55,19 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    z-index: 1;
 }
+
 
 .header_section_1 .header_info {
     margin-top: 30px;
+
+
 }
+
+
+
+
 
 .header_section_2 {
     flex: 2;
@@ -88,9 +98,6 @@
 
 }
 
-.header_info ul {
-    display: none;
-}
 
 .red {
     text-align: center;
@@ -127,7 +134,7 @@
     object-fit: cover;
     width: 100%;
     /*사진의 크기가 특히 높이가 달라서 300px로 높이 통일*/
-    height: 300px;
+    height: 400px;
     /*height: 100%;*/
 }
 
@@ -135,7 +142,7 @@
 .body_ad {
     display: flex;
     width: 100%;
-    height: 30%;
+    height: 40%;
     justify-content: stretch;
     align-items: center;
     overflow: hidden;
@@ -163,6 +170,7 @@
         transform: translateX(0%);
     }
 }
+
 @keyframes rm_my_ani {
     0% {
         transform: translateX(0%);
@@ -170,5 +178,64 @@
 
     100% {
         transform: translateX(-100%);
+    }
+}
+
+
+
+
+.none {
+    display: none;
+}
+
+.block {
+    display: block;
+}
+
+
+.header_info > ul {
+    z-index: 1000;
+    position: absolute;
+    top: 100px;
+    height: 0;
+    width: 100%;
+}
+
+@keyframes menuBarDown {
+    from {
+        background-color: rgb(236, 236, 236);
+        border: 1px solid red;
+        height: 0;
+        overflow: hidden;
+    }
+
+    to {
+        display: block;
+        z-index: 1000;
+        background-color: rgb(236, 236, 236);
+        border: 1px solid red;
+        position: absolute;
+        top: 100px;
+        height: 20%;
+        width: 100%;
+        overflow: hidden;
+    }
+}
+
+@keyframes menuBarUp {
+    from {
+        background-color: rgb(236, 236, 236);
+        border: 1px solid red;
+        height: 20%;
+        overflow: hidden;
+    }
+
+    to {
+        background-color: rgb(236, 236, 236);
+        border: 1px solid red;
+        height: 0;
+        display: none;
+        overflow: hidden;
+
     }
 }

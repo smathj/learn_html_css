@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/main2.css">
+    <script>
+
+        window.onload = () => {
+
+            console.log('main2.js...')
+
+            let liArr = document.querySelectorAll('.header_section_1 > ul li:not(:first-child)');
+            liArr.forEach((li) => {
+
+                li.addEventListener('mouseenter', (event) => {
+
+                    // 다른 메뉴바 올려서 숨기기
+                    document.querySelectorAll('.header_info > ul').forEach((ul) => {
+                        ul.classList.add('none');
+                        ul.style.animationName = 'menuBarUp';
+                        ul.style.animationDuration = '0.5s';
+                        ul.style.animationFillMode = 'forwards';
+                        ul.style.animationTimingFunction = 'ease-in-out';
+                    });
+
+
+                    // 현재 마우스 올린 메뉴바 아래로 내리기
+                    const targetId = `${li.classList[1]}_item`;
+                    let ul = document.getElementById(targetId);
+
+                    ul.classList.remove('none');
+                    ul.style.animationName = 'menuBarDown';
+                    ul.style.animationDuration = '0.5s';
+                    ul.style.animationFillMode = 'forwards';
+                    ul.style.animationTimingFunction = 'ease-in-out';
+
+
+                    // 현재 메뉴 마우스 벗어나면 메뉴바 올려서 숨기기
+                    ul.addEventListener('mouseleave', (event) => {
+                        ul.style.animationName = 'menuBarUp';
+                        ul.style.animationDuration = '0.5s';
+                        ul.style.animationFillMode = 'forwards';
+                        ul.style.animationTimingFunction = 'ease-in-out';
+                    })
+                })
+            })
+
+            //! 배너 회전
+            setInterval(() => {
+                const divArr = [...document.querySelectorAll('.body_ad div')];
+                let targetIndex = 0;
+                let lastIndex = divArr.length - 1;
+                const nowDiv = divArr.find((div, index) => {
+                    const isActive = div.classList[div.classList.length - 1];
+                    targetIndex = index;
+                    return isActive === 'active'
+                })
+                nowDiv.style.animation = 'rm_my_ani 0.1s ease';
+                nowDiv.classList.remove('active');
+
+                setTimeout(() => {
+                    nowDiv.style.display = 'none'
+                }, 100)
+
+                const nextDiv = divArr[targetIndex + 1 <= lastIndex ? targetIndex + 1 : 0];
+                nextDiv.style.display = 'flex';
+                nextDiv.style.animation = 'my_ani 0.1s ease'
+                nextDiv.classList.add('active')
+
+
+            }, 2000)
+        }
+
+
+    </script>
+</head>
+<body>
+    <div class="header">
+        <div class="header_section_1">
+            <ul>
+                <li class="li_first li_1">보리의집</li>
+                <li class="li_other menu_1" id="menu_1">메뉴 1</li>
+                <li class="li_other menu_2" id="menu_2">메뉴 2</li>
+                <li class="li_other menu_3" id="menu_3">메뉴 3</li>
+            </ul>
+            <div class="header_info">
+                <ul id="menu_1_item" class="none">
+<!--                <ul id="menu_1_item">-->
+                    <li>메뉴 1_상품1</li>
+                    <li>메뉴 1_상품2</li>
+                    <li>메뉴 1_상품3</li>
+                    <li>메뉴 1_상품4</li>
+                    <li>메뉴 1_상품5</li>
+                </ul>
+                <ul id="menu_2_item" class="none">
+<!--                <ul id="menu_2_item">-->
+                    <li>메뉴 2_상품1</li>
+                    <li>메뉴 2_상품2</li>
+                    <li>메뉴 2_상품3</li>
+                    <li>메뉴 2_상품4</li>
+                    <li>메뉴 2_상품5</li>
+                    <li>메뉴 2_상품6</li>
+                    <li>메뉴 2_상품7</li>
+                    <li>메뉴 2_상품8</li>
+                    <li>메뉴 2_상품9</li>
+                    <li>메뉴 2_상품10</li>
+                </ul>
+                <ul id="menu_3_item" class="none">
+<!--                <ul id="menu_3_item">-->
+                    <li>메뉴 3_상품1</li>
+                    <li>메뉴 3_상품2</li>
+                    <li>메뉴 3_상품3</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="header_section_2">
+            <input type="text" placeholder="통합검색">
+        </div>
+
+        <div class="header_section_3">
+            <a href="#">로그인</a>
+            <a href="#">회원가입</a>
+            <a href="#">고객센터</a>
+        </div>
+    </div>
+    <div class="body">
+        <!--이미지회전-->
+        <div class="body_ad">
+            <div class="red active">
+                <img src="images/1.jpg"/>
+            </div>
+            <div class="blue">
+                <img src="images/2.jpg"/>
+            </div>
+            <div class="yellow">
+                <img src="images/3.jpg"/>
+            </div>
+        </div>
+
+        <!--검색조건-->
+        <div class="body_search">
+
+        </div>
+        <!--리스트-->
+        <div class="body_content">
+
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
