@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        .container {
+
+            font-size: 20px;
+        }
+
+        #html {
+            background-color: black;
+            color: white;
+            text-align: center;
+            height: 100px;
+            /*height과 같은 크기로*/
+            line-height: 100px;
+            font-size: 1em;
+        }
+
+        #ez {
+            text-shadow: 5px 5px 4px red;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        #ws {
+            letter-spacing: 1em;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        ul > li > ul > li {
+            border: 1px solid red;
+        }
+
+
+        table, th,td {
+            border: 1px solid black;
+        }
+
+        table {
+
+            border-collapse: collapse;
+        }
+
+        .container_html {
+
+            font-size: 50px;
+        }
+
+        #box_shadow {
+            width: 300px;
+            height: 100px;
+            /*수평, 수직, 흐림, 번짐, 색상, inset*/
+            box-shadow: 10px 3px 15px 2px red;
+
+        }
+
+        #border1 {
+            border: 5px double blue;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="container_html">
+        <div id="html">이직하자</div>
+    </div>
+
+    <div><span id="ez">a - 이직하자</span></div>
+    <div><span id="ws">가나다</span></div>
+    <div>
+        <ul>
+            <li>1
+                <ul>
+                    <li>a</li>
+                    <li>b</li>
+                    <li>c</li>
+                </ul>
+            </li>
+            <li>2
+                <ul>
+                    <li>a</li>
+                    <li>b</li>
+                    <li>c</li>
+                </ul>
+            </li>
+
+            <li>3
+                <ul>
+                    <li>a</li>
+                    <li>b</li>
+                    <li>c</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>1</th>
+                    <th>2</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>a</td>
+                    <td>b</td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+    <div id="box_shadow">Box Shadow</div>
+    <div id="border1">border</div>
+</div>
+</body>
+</html>
