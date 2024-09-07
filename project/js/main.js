@@ -9,13 +9,15 @@ let currentBannerIndex = 0;
 let currentRadioIndex = 0;
 let intervalId = null;
 let stopFlag = false;
-const duration = 2000;
+const duration = 1000;
 
 
 window.onload = async () => {
     bannerArr = [...document.querySelectorAll('.header_banner > div')];
     radioArr = [...document.querySelectorAll('.header_banner_nav input[type=radio]')]
     fnBannerAddInterverEvent(fnBannerRoop)
+
+
 }
 
 
@@ -40,115 +42,94 @@ function fnBannerRemoveInterverEvent() {
  */
 function fnBannerRoop() {
 
+    console.log('currentBannerIndex', currentBannerIndex)
+    console.log('bannerArr.length', bannerArr.length)
 
-    //* [배너]
-    bannerArr[currentBannerIndex].classList.remove('active');
-    bannerArr[currentBannerIndex].classList.add('none');   // 공간 차지 X
 
-    // 다음 배너 인덱스
     currentBannerIndex = (currentBannerIndex + 1) % bannerArr.length;
 
-    bannerArr[currentBannerIndex].classList.remove('none');
+    // 마지막 배너일때
+    if (currentBannerIndex + 1 === bannerArr.length) {
+        // console.log('왓어')
+        // // 제일 앞 요소 복사
+        // const firstHtml = bannerArr[0].outerHTML
+        //
+        // // 제일 마지막에 첫번째 요소 복사
+        // document.getElementById('header_banner')
+        //     .insertAdjacentHTML('beforeend', firstHtml);
+        //
+        // bannerArr = [...document.querySelectorAll('.header_banner > div')];
 
-    // 트랜지션을 걸어놨으니 지연효과를 맞춰서 주자
-    setTimeout(() => {
-        bannerArr[currentBannerIndex].classList.add('active'); // 공간 차지 O
-    }, 50)
 
+        setTimeout(() => {
+            bannerArr[0].style.transform = `translateX(${bannerArr.length * 100}%)`;
+        }, 50);
 
-    //* [라디오]
-    // 다음 라디오 인덱스
-    currentRadioIndex = (currentRadioIndex + 1) % radioArr.length;
-    for (let i = 0; i < radioArr.length; i++) {
-        const input = radioArr[i];
-        if (i === currentRadioIndex) {
-            input.checked = true;
-        } else {
-            input.checked = false;
-        }
+    } else {
+
+        setTimeout(() => {
+            bannerArr[currentBannerIndex].style.transform = `translateX(-${currentBannerIndex * 100}%)`;
+        }, 50);
+
 
     }
 
-    fnBannerPageNumberSetting()
 
+    /*
 
-}
+        console.log('현재 배너 인덱스', currentRadioIndex)
+        // const offsetWidth = bannerArr[currentBannerIndex].offsetWidth
 
-/**
- * 배너 라디오 버튼 클릭 이벤트 함수
- */
-function fnBannerRadioClick(clickIndex = 0) {
+        let currentIdx = currentBannerIndex;
+        let nextIdx = (currentBannerIndex + 1) % bannerArr.length;
 
-    fnBannerRemoveInterverEvent()
+        if (nextIdx + 1 === bannerArr.length) {
+            console.log('nextIdx 는 마지막 배너임')
 
-    // 클릭한 라디오 인덱스
-    currentRadioIndex = clickIndex
-    currentBannerIndex = clickIndex
-    fnBannerPageNumberSetting()
+            // currentIdx 복사, 삭제
+            const firstHtml = bannerArr[0].outerHTML
+            console.log('firstHtml', firstHtml)
 
-    // 클릭한 인덱스를 제외하고 다 false 처리
-    for (let i = 0; i < radioArr.length; i++) {
-        const input = radioArr[i];
-        if (i === currentRadioIndex) {
-            input.checked = true;
-        } else {
-            input.checked = false;
-        }
-    }
+            // 제일 마지막에 첫번째 요소 복사
+            document.getElementById('header_banner')
+                .insertAdjacentHTML('beforeend', firstHtml);
 
+            bannerArr = [...document.querySelectorAll('.header_banner > div')];
 
-    for (let i = 0; i < bannerArr.length; i++) {
-
-        // 클릭 한 배너를 보여준다
-        if (i === currentBannerIndex) {
-            // 다음 배너 인덱스
-            // currentBannerIndex = (i + 1) % bannerArr.length;
-
-            bannerArr[i].classList.remove('none');
-
-            // 트랜지션을 걸어놨으니 지연효과를 맞춰서 주자
             setTimeout(() => {
-                bannerArr[i].classList.add('active'); // 공간 차지 O
+                bannerArr[(currentBannerIndex + 1)].style.transform = `translateX(-${(currentBannerIndex + 1) * 100}%)`;
             }, 50)
 
-            // 다른 배너는 숨긴다
-        } else {
-            bannerArr[i].classList.remove('active');
-            bannerArr[i].classList.add('none');   // 공간 차지 X
+            bannerArr[0].remove();
+            bannerArr = [...document.querySelectorAll('.header_banner > div')];
+            currentBannerIndex = bannerArr.length - 1;
 
+
+            // bannerArr = [...document.querySelectorAll('.header_banner > div')];
+            //
+            // console.log(bannerArr.length)
+            // currentBannerIndex = currentBannerIndex + 1;
+            //
+            //
+            // setTimeout(() => {
+            //     bannerArr[currentBannerIndex].style.transform = `translateX(-${currentBannerIndex * 100}%)`;
+            // }, 50)
+            //
+            // bannerArr[0].remove();
+            // currentBannerIndex = 0;
+
+
+        } else {
+            currentBannerIndex = nextIdx;
+            setTimeout(() => {
+                bannerArr[currentBannerIndex].style.transform = `translateX(-${currentBannerIndex * 100}%)`;
+            }, 50)
         }
 
-    }
+    */
 
-    if (!stopFlag) {
-        setTimeout(() => {
-            fnBannerAddInterverEvent(fnBannerRoop)
-        }, 500);
-    }
+    console.log('\n');
 }
-
-/**
- * 배너 숫자 셋팅 함수
- */
-function fnBannerPageNumberSetting() {
-    document.getElementById('current_banner_page').innerText = (currentBannerIndex + 1).toString()
-    document.getElementById('last_banner_page').innerText = bannerArr.length.toString()
-}
-
-function fnBannerPlayerStart() {
-    stopFlag = false;
-    fnBannerAddInterverEvent()
-    document.getElementById('banner_player').innerHTML = `<span class="material-symbols-outlined" onclick="fnBannerPlayerStop()">stop_circle</span>`
-
-
-}
-
-function fnBannerPlayerStop() {
-    stopFlag = true;
-    fnBannerRemoveInterverEvent();
-    document.getElementById('banner_player').innerHTML = '<span class="material-symbols-outlined" onclick="fnBannerPlayerStart()">play_circle</span>'
-}
-
 
 
 
