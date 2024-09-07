@@ -42,11 +42,11 @@ body {
     height: 50vh;
     display: grid;
     /*grid-template-columns: repeat(4, 1fr);*/
-    grid-template-rows: repeat(2, 1fr);
-    grid-template-columns: repeat(4, minmax(500px, 500px));
+    /*grid-template-rows: repeat(2, 1fr);*/
+    /*grid-template-columns: repeat(4, minmax(400px, 400px));*/
     /*gap: 1rem 1rem;*/
     gap: 20px 20px;
-    justify-content: space-around;
+    justify-content: space-evenly;
 
 
 }
@@ -106,14 +106,23 @@ body {
 
 
 .footer {
-    border: 1px solid red;
     height: 15vh;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: end;
+    align-items: center;
+
+}
+
+.footer > div {
+    height: 90%;
+    width: 100%;
+    font-size: 30px;
+    font-weight: bold;
     background-color: #31353a;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 30px;
-    font-weight: bold;
 }
 
 
@@ -221,7 +230,6 @@ body {
         /*grid-template-columns: repeat(auto-fit, minmax(200px, 200px));*/
         grid-template-columns: repeat(4, minmax(200px, 200px));
         overflow: hidden;
-        justify-content: space-evenly;
     }
 
 
@@ -238,7 +246,8 @@ body {
 
         /* 데스크톱용 스타일 */
         grid-template-rows: repeat(2, 1fr);
-        grid-template-columns: repeat(4, minmax(500px, 500px));
+        /*grid-template-columns: repeat(4, minmax(500px, 500px));*/
+        grid-template-columns: repeat(4, minmax(400px, 450px));
     }
 
     .card:hover > .card_img_bg_icon {
