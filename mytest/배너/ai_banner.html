@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>무한 롤링 배너</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .banner-container {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .banner {
+            display: flex;
+            width: 200%; /* 원본 + 복제본 */
+        }
+
+        .banner-item {
+            flex: 0 0 25%; /* 4개의 배너 아이템 */
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: white;
+        }
+
+        .banner-item:nth-child(1), .banner-item:nth-child(5) { background-color: #ff6b6b; }
+        .banner-item:nth-child(2), .banner-item:nth-child(6) { background-color: #4ecdc4; }
+        .banner-item:nth-child(3), .banner-item:nth-child(7) { background-color: #45b7d1; }
+        .banner-item:nth-child(4), .banner-item:nth-child(8) { background-color: #f7b731; }
+    </style>
+</head>
+<body>
+    <div class="banner-container">
+        <div class="banner">
+            <div class="banner-item">배너 1</div>
+            <div class="banner-item">배너 2</div>
+            <div class="banner-item">배너 3</div>
+            <div class="banner-item">배너 4</div>
+            <!-- 무한 롤링을 위해 처음 아이템들을 복제 -->
+            <div class="banner-item">배너 1</div>
+            <div class="banner-item">배너 2</div>
+            <div class="banner-item">배너 3</div>
+            <div class="banner-item">배너 4</div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const banner = document.querySelector('.banner');
+            let position = 0;
+            const speed = 1; // 픽셀 단위로 이동 속도
+            const totalWidth = banner.offsetWidth / 2; // 원본 배너의 전체 너비
+            console.log('position', position)
+            console.log('totalWidth', totalWidth)
+            function moveLeft() {
+                position -= speed;
+                // if (position <= -totalWidth) {
+                //     console.log('position', position)
+                //     position = 0;
+                // }
+                banner.style.transform = `translateX(${position}px)`;
+                requestAnimationFrame(moveLeft);
+            }
+
+            moveLeft();
+        });
+    </script>
+</body>
+</html>
