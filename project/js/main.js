@@ -9,14 +9,12 @@ let currentBannerIndex = 0;
 let currentRadioIndex = 0;
 let intervalId = null;
 let stopFlag = false;
-const duration = 1000;
-
+const duration = 3000;
 
 window.onload = async () => {
     bannerArr = [...document.querySelectorAll('.header_banner > div')];
     radioArr = [...document.querySelectorAll('.header_banner_nav input[type=radio]')]
     fnBannerAddInterverEvent(fnBannerRoop)
-
 
 }
 
@@ -41,96 +39,57 @@ function fnBannerRemoveInterverEvent() {
  * 배너, 라디오 루프
  */
 function fnBannerRoop() {
+    console.log('currentBannerIndex', currentBannerIndex);
 
-    console.log('currentBannerIndex', currentBannerIndex)
-    console.log('bannerArr.length', bannerArr.length)
+    const headerBanner = document.getElementById('header_banner');
+    bannerArr = [...headerBanner.children];
+
+    // 트랜지션 시간 (초 단위)
+    const transitionTime = 0.5;
+
+    // 첫 번째 배너를 왼쪽으로 이동
+    bannerArr[0].style.transition = `transform ${transitionTime}s ease`;
+    bannerArr[0].style.transform = 'translateX(-100%)';
+
+    // 두 번째 배너를 현재 위치로 이동
+    bannerArr[1].style.transition = `transform ${transitionTime}s ease`;
+    bannerArr[1].style.transform = 'translateX(-100%)';
+
+    // 트랜지션이 끝난 후 정리 및 새 배너 추가
+    setTimeout(() => {
+        // 첫 번째 배너 제거
+        bannerArr[0].remove();
+
+        // 남은 배너의 스타일 완전 초기화 즉시 반영
+        bannerArr[1].style.transition = 'none';
+        bannerArr[1].style.transform = 'translateX(0)';
+
+        // 강제 리플로우 (레이아웃 재계산)
+        headerBanner.offsetHeight;
+
+        // 트랜지션 다시 활성화, 다른 css 파일에서 선언된게 있다면 그거 사용
+        bannerArr[1].style.transition = '';
 
 
-    currentBannerIndex = (currentBannerIndex + 1) % bannerArr.length;
-
-    // 마지막 배너일때
-    if (currentBannerIndex + 1 === bannerArr.length) {
-        // console.log('왓어')
-        // // 제일 앞 요소 복사
-        // const firstHtml = bannerArr[0].outerHTML
-        //
-        // // 제일 마지막에 첫번째 요소 복사
-        // document.getElementById('header_banner')
-        //     .insertAdjacentHTML('beforeend', firstHtml);
-        //
-        // bannerArr = [...document.querySelectorAll('.header_banner > div')];
+        // 새로운 배너 추가
+        const newBanner = document.createElement('div');
+        newBanner.className = `banner${currentBannerIndex + 1}`;
+        newBanner.style.transform = 'translateX(100%)';
+        headerBanner.appendChild(newBanner);
 
 
+        // 새 배너를 오른쪽에서 현재 위치로 이동
         setTimeout(() => {
-            bannerArr[0].style.transform = `translateX(${bannerArr.length * 100}%)`;
-        }, 50);
+            newBanner.style.transition = `transform ${transitionTime}s ease`;
+            newBanner.style.transform = 'translateX(0)';
+        }, 20);
 
-    } else {
+        // 인덱스 업데이트
+        currentBannerIndex = (currentBannerIndex + 1) % 3; // 3은 총 배너 수, => 0 | 1 | 2
 
-        setTimeout(() => {
-            bannerArr[currentBannerIndex].style.transform = `translateX(-${currentBannerIndex * 100}%)`;
-        }, 50);
-
-
-    }
-
-
-    /*
-
-        console.log('현재 배너 인덱스', currentRadioIndex)
-        // const offsetWidth = bannerArr[currentBannerIndex].offsetWidth
-
-        let currentIdx = currentBannerIndex;
-        let nextIdx = (currentBannerIndex + 1) % bannerArr.length;
-
-        if (nextIdx + 1 === bannerArr.length) {
-            console.log('nextIdx 는 마지막 배너임')
-
-            // currentIdx 복사, 삭제
-            const firstHtml = bannerArr[0].outerHTML
-            console.log('firstHtml', firstHtml)
-
-            // 제일 마지막에 첫번째 요소 복사
-            document.getElementById('header_banner')
-                .insertAdjacentHTML('beforeend', firstHtml);
-
-            bannerArr = [...document.querySelectorAll('.header_banner > div')];
-
-            setTimeout(() => {
-                bannerArr[(currentBannerIndex + 1)].style.transform = `translateX(-${(currentBannerIndex + 1) * 100}%)`;
-            }, 50)
-
-            bannerArr[0].remove();
-            bannerArr = [...document.querySelectorAll('.header_banner > div')];
-            currentBannerIndex = bannerArr.length - 1;
-
-
-            // bannerArr = [...document.querySelectorAll('.header_banner > div')];
-            //
-            // console.log(bannerArr.length)
-            // currentBannerIndex = currentBannerIndex + 1;
-            //
-            //
-            // setTimeout(() => {
-            //     bannerArr[currentBannerIndex].style.transform = `translateX(-${currentBannerIndex * 100}%)`;
-            // }, 50)
-            //
-            // bannerArr[0].remove();
-            // currentBannerIndex = 0;
-
-
-        } else {
-            currentBannerIndex = nextIdx;
-            setTimeout(() => {
-                bannerArr[currentBannerIndex].style.transform = `translateX(-${currentBannerIndex * 100}%)`;
-            }, 50)
-        }
-
-    */
-
-    console.log('\n');
+        console.log('\n');
+    }, transitionTime * 1000);
 }
-
 
 
 
