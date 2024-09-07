@@ -1,8 +1,8 @@
 body {
     padding: 0;
     margin: 0;
-    min-width: 100vh;
-    min-height: 100vh;
+    min-width: 100%;
+    min-height: 100%;
     box-sizing: border-box;
     overflow-x: hidden;
 }
@@ -15,6 +15,7 @@ body {
 
 .header {
     height: 35vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -27,7 +28,7 @@ body {
 }
 
 .header_banner {
-    position: relative;
+    /*position: relative;*/
     width: 100%;
     height: 80%;
     display: flex;
@@ -36,17 +37,87 @@ body {
 }
 
 .main {
-    border: 1px solid red;
+    /*border: 1px solid red;*/
+    /*margin-top: 150px;*/
     height: 50vh;
+    display: grid;
+    /*grid-template-columns: repeat(4, 1fr);*/
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(4, minmax(500px, 500px));
+    /*gap: 1rem 1rem;*/
+    gap: 20px 20px;
+    justify-content: space-around;
+
+
 }
+
+.card {
+    position: relative;
+    border: 1px solid black;
+    border-radius: 15px;
+    /*height: 25rem;*/
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.card_img_bg {
+    position: absolute;
+}
+
+.card_img_bg_icon {
+    position: absolute;
+    display: flex;
+    justify-content: end;
+}
+
+
+.card:hover > .card_img_bg {
+    background: rgba(0, 0, 0, 0.5);
+    display: block;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.card:hover > .card_img_bg_icon {
+    display: block;
+    bottom: 35%;
+    /*bottom: calc(100% - 65%);*/
+    right: 5%;
+}
+
+
+.card_img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card_img {
+    object-fit: cover;
+    height: 70%;
+}
+
+.card_goods_name, .card_goods_price {
+    height: 15%;
+    padding: 7px;
+}
+
 
 .footer {
     border: 1px solid red;
     height: 15vh;
+    background-color: #31353a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-weight: bold;
 }
 
 
-.banner1, .banner2, .banner3 {
+.banner0, .banner1, .banner2 {
     flex: 0 0 100%;
     width: 100%;
     height: 100%;
@@ -57,17 +128,17 @@ body {
     /*transition: transform 0.5s ease-in-out;*/
 }
 
-.banner1 {
+.banner0 {
     /*background-color: red;*/
     background-image: url("../images/1.jpg");
 }
 
-.banner2 {
+.banner1 {
     /*background-color: blue;*/
     background-image: url("../images/2.jpg");
 }
 
-.banner3 {
+.banner2 {
     /*background-color: orange;*/
     background-image: url("../images/3.jpg");
 }
@@ -113,7 +184,67 @@ body {
 }
 
 
+.pointer {
+    cursor: pointer;
+}
 
 
+/* 모바일 기기 (기본 스타일) */
+@media all and (max-width: 767px) {
+    .main {
+        /* 태블릿용 스타일 */
+        /*grid-template-rows: repeat(2, 1fr);*/
+        grid-template-rows: repeat(auto-fit, minmax(620px, 700px));
+        /*grid-template-columns: repeat(auto-fit, minmax(200px, 200px));*/
+        grid-template-columns: repeat(1, minmax(200px, 630px));
+        /*overflow: hidden;*/
+        overflow: hidden;
+        justify-content: space-evenly;
+    }
 
+
+    .card:hover > .card_img_bg_icon {
+        display: block;
+        bottom: 40%;
+        right: 5%;
+    }
+}
+
+
+/* 태블릿 */
+@media all and (min-width: 768px) and (max-width: 1023px) {
+    /*@media all and (max-width: 1023px) {*/
+    .main {
+        /* 태블릿용 스타일 */
+        /*grid-template-rows: repeat(2, 1fr);*/
+        grid-template-rows: repeat(auto-fit, minmax(300px, 300px));
+        /*grid-template-columns: repeat(auto-fit, minmax(200px, 200px));*/
+        grid-template-columns: repeat(4, minmax(200px, 200px));
+        overflow: hidden;
+        justify-content: space-evenly;
+    }
+
+
+    .card:hover > .card_img_bg_icon {
+        display: block;
+        bottom: 40%;
+        right: 5%;
+    }
+}
+
+/* 데스크톱 */
+@media all and (min-width: 1024px) {
+    .main {
+
+        /* 데스크톱용 스타일 */
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-columns: repeat(4, minmax(500px, 500px));
+    }
+
+    .card:hover > .card_img_bg_icon {
+        display: block;
+        bottom: 35%;
+        right: 5%;
+    }
+}
 
