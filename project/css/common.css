@@ -7,11 +7,22 @@ html, body {
 body {
     box-sizing: border-box;
     overflow-x: hidden;
+    font-family: "Jua", sans-serif;
 }
+
+.jua-regular {
+    font-family: "Jua", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
 
 .container {
     height: 100%;
     width: 100%;
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*justify-content: space-between;*/
 }
 
 .header {
@@ -34,18 +45,21 @@ body {
 }
 
 .main {
-    height: 50%;
+    /*height: 50%;*/
+    height: auto;
     display: grid;
     gap: 20px 20px;
     justify-content: space-evenly;
 }
 
 .footer {
-    height: 10vh;
+    height: 10%;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     justify-content: end;
     align-items: center;
+    margin-top: 20px;
+
 
 }
 
@@ -160,7 +174,6 @@ body {
     height: 90%;
     width: 100%;
     font-size: 30px;
-    font-weight: bold;
     background-color: #31353a;
     display: flex;
     justify-content: center;
@@ -251,7 +264,6 @@ body {
         justify-content: space-evenly;
         grid-template-columns: 1fr;
         justify-items: center;
-        height: auto;
     }
 
     .card {
@@ -260,7 +272,7 @@ body {
     }
 
     .header {
-        height: 20vh;
+        height: 20%;
     }
 
 
@@ -279,7 +291,6 @@ body {
         /* 태블릿용 스타일 */
         grid-template-rows: repeat(auto-fit, minmax(350px, 350px));
         grid-template-columns: repeat(2, minmax(350px, 350px));
-        height: auto;
     }
 
     /* 미세하게 줄어드는거 방지 */
@@ -305,7 +316,6 @@ body {
         grid-template-rows: repeat(auto-fit, minmax(400px, 400px));
         /*grid-template-columns: repeat(4, minmax(500px, 500px));*/
         grid-template-columns: repeat(5, minmax(400px, 400px));
-        height: auto;
     }
 
     /* 미세하게 줄어드는거 방지 */

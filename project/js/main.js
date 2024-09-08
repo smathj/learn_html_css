@@ -130,7 +130,7 @@ function fnBannerRoop() {
 
 
 /**
- * 배너 라디오 버튼 클릭 이벤트 함수
+ * 배너 라디오 버튼 클릭 이벤트 함수 TODO
  */
 function fnBannerRadioClick(clickIndex = 0) {
     console.log('fnBannerRadioClick');
