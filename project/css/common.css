@@ -113,7 +113,7 @@ body {
 
 .nav_cate > ul > li:hover {
     background-color: #305dea;
-    /*color: white;*/
+    text-shadow: 1px 1px 10px white;
 }
 
 
