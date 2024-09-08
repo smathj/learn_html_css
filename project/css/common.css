@@ -1,25 +1,52 @@
-body {
+html, body {
+    height: 100%;
     padding: 0;
     margin: 0;
-    min-width: 100%;
-    min-height: 100%;
+}
+
+body {
     box-sizing: border-box;
     overflow-x: hidden;
 }
 
 .container {
-    /*min-height: 100vh;*/
     height: 100%;
     width: 100%;
 }
 
 .header {
-    height: 35vh;
+    height: 35%;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+}
+
+
+.nav_cate {
+    height: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: stretch;
+    margin: 20px 0;
+}
+
+.main {
+    height: 50%;
+    display: grid;
+    gap: 20px 20px;
+    justify-content: space-evenly;
+}
+
+.footer {
+    height: 10vh;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: end;
+    align-items: center;
+
 }
 
 .header_searchBar {
@@ -28,28 +55,53 @@ body {
 }
 
 .header_banner {
-    /*position: relative;*/
     width: 100%;
     height: 80%;
     display: flex;
+}
+
+.nav_cate > ul {
+    list-style: none;
+    display: flex;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 0;
     flex-direction: row;
-    overflow: hidden;
+    justify-content: stretch;
+    align-items: stretch;
+    height: 100%;
+    margin: 0;
 }
 
-.main {
-    /*border: 1px solid red;*/
-    /*margin-top: 150px;*/
-    height: 50vh;
-    display: grid;
-    /*grid-template-columns: repeat(4, 1fr);*/
-    /*grid-template-rows: repeat(2, 1fr);*/
-    /*grid-template-columns: repeat(4, minmax(400px, 400px));*/
-    /*gap: 1rem 1rem;*/
-    gap: 20px 20px;
-    justify-content: space-evenly;
-
-
+.nav_cate > ul > li {
+    flex-grow: 1;
+    border: 1px solid black;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../images/dog_icon.png");
+    background-repeat: no-repeat;
+    background-position: left;
+    transition: all 0.5s ease-in-out;
+    font-size: 20px;
+    font-weight: bold;
 }
+
+.nav_cate > ul > li:first-child {
+    border-radius: 10px 0 0 10px;
+}
+
+.nav_cate > ul > li:last-child {
+    border-radius: 0 10px 10px 0;
+}
+
+.nav_cate > ul > li:hover {
+    background-color: #305dea;
+    /*color: white;*/
+}
+
 
 .card {
     position: relative;
@@ -91,11 +143,10 @@ body {
 .card_img img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: fill;
 }
 
 .card_img {
-    object-fit: cover;
     height: 70%;
 }
 
@@ -104,15 +155,6 @@ body {
     padding: 7px;
 }
 
-
-.footer {
-    height: 15vh;
-    display: flex;
-    flex-direction: column-reverse;
-    justify-content: end;
-    align-items: center;
-
-}
 
 .footer > div {
     height: 90%;
@@ -129,7 +171,8 @@ body {
 .banner0, .banner1, .banner2 {
     flex: 0 0 100%;
     width: 100%;
-    height: 100%;
+    height: auto;
+    /*min-height: 300px;*/
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -140,16 +183,19 @@ body {
 .banner0 {
     /*background-color: red;*/
     background-image: url("../images/1.jpg");
+    /*background-image: url("../images/banner/b11.jpg");*/
 }
 
 .banner1 {
     /*background-color: blue;*/
     background-image: url("../images/2.jpg");
+    /*background-image: url("../images/banner/b22.jpg");*/
 }
 
 .banner2 {
     /*background-color: orange;*/
     background-image: url("../images/3.jpg");
+    /*background-image: url("../images/banner/b33.jpg");*/
 }
 
 .active {
@@ -199,16 +245,22 @@ body {
 
 
 /* 모바일 기기 (기본 스타일) */
-@media all and (max-width: 767px) {
+@media screen and (max-width: 767px) {
     .main {
-        /* 태블릿용 스타일 */
-        /*grid-template-rows: repeat(2, 1fr);*/
-        grid-template-rows: repeat(auto-fit, minmax(620px, 700px));
-        /*grid-template-columns: repeat(auto-fit, minmax(200px, 200px));*/
-        grid-template-columns: repeat(1, minmax(200px, 630px));
-        /*overflow: hidden;*/
-        overflow: hidden;
+        /*그리드*/
         justify-content: space-evenly;
+        grid-template-columns: 1fr;
+        justify-items: center;
+        height: auto;
+    }
+
+    .card {
+        width: 400px;
+        height: 400px;
+    }
+
+    .header {
+        height: 20vh;
     }
 
 
@@ -217,19 +269,23 @@ body {
         bottom: 40%;
         right: 5%;
     }
+
 }
 
 
 /* 태블릿 */
-@media all and (min-width: 768px) and (max-width: 1023px) {
-    /*@media all and (max-width: 1023px) {*/
+@media screen and (min-width: 768px) and (max-width: 1023px) {
     .main {
         /* 태블릿용 스타일 */
-        /*grid-template-rows: repeat(2, 1fr);*/
-        grid-template-rows: repeat(auto-fit, minmax(300px, 300px));
-        /*grid-template-columns: repeat(auto-fit, minmax(200px, 200px));*/
-        grid-template-columns: repeat(4, minmax(200px, 200px));
-        overflow: hidden;
+        grid-template-rows: repeat(auto-fit, minmax(350px, 350px));
+        grid-template-columns: repeat(2, minmax(350px, 350px));
+        height: auto;
+    }
+
+    /* 미세하게 줄어드는거 방지 */
+    .card {
+        width: 350px;
+        height: 350px;
     }
 
 
@@ -241,13 +297,21 @@ body {
 }
 
 /* 데스크톱 */
-@media all and (min-width: 1024px) {
+@media screen and (min-width: 1024px) {
     .main {
 
         /* 데스크톱용 스타일 */
-        grid-template-rows: repeat(2, 1fr);
+        /*grid-template-rows: repeat(1, 1fr);*/
+        grid-template-rows: repeat(auto-fit, minmax(400px, 400px));
         /*grid-template-columns: repeat(4, minmax(500px, 500px));*/
-        grid-template-columns: repeat(4, minmax(400px, 450px));
+        grid-template-columns: repeat(5, minmax(400px, 400px));
+        height: auto;
+    }
+
+    /* 미세하게 줄어드는거 방지 */
+    .card {
+        width: 400px;
+        height: 400px;
     }
 
     .card:hover > .card_img_bg_icon {
@@ -257,3 +321,6 @@ body {
     }
 }
 
+.white {
+    color: white;
+}
